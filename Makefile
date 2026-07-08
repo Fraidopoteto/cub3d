@@ -6,7 +6,7 @@
 #    By: joschmun <joschmun@student.42wolfsburg>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2026/07/08 03:44:14 by joschmun          #+#    #+#              #
-#    Updated: 2026/07/08 04:24:50 by joschmun         ###   ########.fr        #
+#    Updated: 2026/07/08 05:49:47 by joschmun         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -27,7 +27,7 @@ MLX_DIR   := $(INC_DIR)/minilibx-linux
 
 # ==================== FLAGS ====================
 CFLAGS    := -Wall -Wextra -Werror -O2
-CPPFLAGS  := -I$(INC_DIR) -I$(LIBFT_DIR) -I$(MLX_DIR) -I$(SRC_DIR) -I$(SRC_DIR)/run -I$(SRC_DIR)/init
+CPPFLAGS  := -I$(INC_DIR) -I$(LIBFT_DIR) -I$(MLX_DIR) -I$(SRC_DIR) -I$(SRC_DIR)/run -I$(SRC_DIR)/init -I$(SRC_DIR)/window -I$(SRC_DIR)/keyhook -I$(SRC_DIR)/cleanup
 
 LDFLAGS   :=
 LDLIBS    := -L$(LIBFT_DIR) -lft -L$(MLX_DIR) -lmlx -lXext -lX11 -lm
@@ -45,8 +45,19 @@ endif
 SRC :=
 vpath %.c $(SRC_DIR)/run
 SRC += main.c
+SRC += run.c
+
 vpath %.c $(SRC_DIR)/init
 SRC += init.c
+
+vpath %.c $(SRC_DIR)/window
+SRC += window.c
+
+vpath %.c $(SRC_DIR)/keyhook
+SRC += keyhook.c
+
+vpath %.c $(SRC_DIR)/cleanup
+SRC += cleanup.c
 
 OBJ := $(SRC:.c=.o)
 OBJ := $(addprefix $(OBJ_DIR)/, $(OBJ))

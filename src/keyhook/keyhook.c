@@ -1,22 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   keyhook.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: joschmun <joschmun@student.42wolfsburg>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/07/08 04:19:30 by joschmun          #+#    #+#             */
-/*   Updated: 2026/07/08 05:28:06 by joschmun         ###   ########.fr       */
+/*   Created: 2026/07/08 05:46:47 by joschmun          #+#    #+#             */
+/*   Updated: 2026/07/08 05:58:45 by joschmun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "run.h"
+#include "keyhook.h"
 
-int	main(void)
+int	handle_keypress(int keycode, t_game *game)
 {
-	t_game	game;
-
-	init(&game);
-	create_window(&game);
-	run(&game);
+	if (keycode == 65307)
+		close_game(game);
+	return (0);
 }

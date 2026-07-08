@@ -1,22 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   run.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: joschmun <joschmun@student.42wolfsburg>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/07/08 04:19:30 by joschmun          #+#    #+#             */
-/*   Updated: 2026/07/08 05:28:06 by joschmun         ###   ########.fr       */
+/*   Created: 2026/07/08 05:15:19 by joschmun          #+#    #+#             */
+/*   Updated: 2026/07/08 05:56:35 by joschmun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "run.h"
 
-int	main(void)
+void	run(t_game *game)
 {
-	t_game	game;
-
-	init(&game);
-	create_window(&game);
-	run(&game);
+	mlx_loop(game->mlx);
 }
