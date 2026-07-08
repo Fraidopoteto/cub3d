@@ -1,22 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   keyhook.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: joschmun <joschmun@student.42wolfsburg>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/07/08 04:19:30 by joschmun          #+#    #+#             */
-/*   Updated: 2026/07/08 05:28:06 by joschmun         ###   ########.fr       */
+/*   Created: 2026/07/08 05:46:15 by joschmun          #+#    #+#             */
+/*   Updated: 2026/07/08 05:59:23 by joschmun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "run.h"
+#ifndef KEYHOOK_H
+# define KEYHOOK_H
 
-int	main(void)
-{
-	t_game	game;
+# include "init.h"
+# include "cleanup.h"
 
-	init(&game);
-	create_window(&game);
-	run(&game);
-}
+int	handle_keypress(int keycode, t_game *game);
+
+#endif

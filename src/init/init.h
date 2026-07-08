@@ -6,7 +6,7 @@
 /*   By: joschmun <joschmun@student.42wolfsburg>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/08 03:52:41 by joschmun          #+#    #+#             */
-/*   Updated: 2026/07/08 03:53:58 by joschmun         ###   ########.fr       */
+/*   Updated: 2026/07/08 06:00:11 by joschmun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,15 @@
 # define INIT_H
 
 # include <stdio.h>
+# include <stdlib.h>
+# include "mlx.h"
 
-void	init(void);
+typedef struct s_game
+{
+	void	*mlx;
+	void	*win;
+}	t_game;
+
+void	init(t_game *game);
 
 #endif

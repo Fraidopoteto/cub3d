@@ -1,22 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   window.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: joschmun <joschmun@student.42wolfsburg>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/07/08 04:19:30 by joschmun          #+#    #+#             */
-/*   Updated: 2026/07/08 05:28:06 by joschmun         ###   ########.fr       */
+/*   Created: 2026/07/08 05:09:10 by joschmun          #+#    #+#             */
+/*   Updated: 2026/07/08 05:57:02 by joschmun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "run.h"
+#ifndef WINDOW_H
+# define WINDOW_H
 
-int	main(void)
-{
-	t_game	game;
+#include "init.h"
+#include "cleanup.h"
+#include "keyhook.h"
 
-	init(&game);
-	create_window(&game);
-	run(&game);
-}
+void	create_window(t_game *game);
+
+#endif

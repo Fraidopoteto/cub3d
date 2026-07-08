@@ -1,22 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   cleanup.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: joschmun <joschmun@student.42wolfsburg>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/07/08 04:19:30 by joschmun          #+#    #+#             */
-/*   Updated: 2026/07/08 05:28:06 by joschmun         ###   ########.fr       */
+/*   Created: 2026/07/08 04:51:28 by joschmun          #+#    #+#             */
+/*   Updated: 2026/07/08 05:42:18 by joschmun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "run.h"
+#include "cleanup.h"
 
-int	main(void)
+int	close_game(t_game *game)
 {
-	t_game	game;
+	if (game->win)
+		mlx_destroy_window(game->mlx, game->win);
+	cleanup();
+	exit(0);
+	return (0);
+}	
 
-	init(&game);
-	create_window(&game);
-	run(&game);
+void	cleanup(void)
+{
+	printf("cleanup...");
 }

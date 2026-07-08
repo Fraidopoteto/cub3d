@@ -6,13 +6,15 @@
 /*   By: joschmun <joschmun@student.42wolfsburg>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/08 04:18:29 by joschmun          #+#    #+#             */
-/*   Updated: 2026/07/08 04:19:21 by joschmun         ###   ########.fr       */
+/*   Updated: 2026/07/08 05:17:57 by joschmun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "init.h"
 
-void	init(void)
+void	init(t_game *game)
 {
-	printf("Hello Wolrd\n");
+	game->mlx = mlx_init();
+	if (!game->mlx)
+		return;
 }
