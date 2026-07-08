@@ -1,23 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   run.h                                              :+:      :+:    :+:   */
+/*   parser.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: joschmun <joschmun@student.42wolfsburg>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/07/08 03:54:15 by joschmun          #+#    #+#             */
-/*   Updated: 2026/07/08 09:01:31 by joschmun         ###   ########.fr       */
+/*   Created: 2026/07/08 08:55:26 by joschmun          #+#    #+#             */
+/*   Updated: 2026/07/08 11:36:28 by joschmun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef RUN_H
-# define RUN_H
+#include "parser.h"
 
-# include "init.h"
-# include "window.h"
-# include "error.h"
-# include "parser.h"
+void	parser(char *file_name)
+{
+	t_map map;
 
-void	run(t_game *game);
-
-#endif
+	read_metadata(file_name, &map);
+}

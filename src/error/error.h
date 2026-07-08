@@ -1,23 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   run.h                                              :+:      :+:    :+:   */
+/*   error.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: joschmun <joschmun@student.42wolfsburg>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/07/08 03:54:15 by joschmun          #+#    #+#             */
-/*   Updated: 2026/07/08 09:01:31 by joschmun         ###   ########.fr       */
+/*   Created: 2026/07/08 08:28:05 by joschmun          #+#    #+#             */
+/*   Updated: 2026/07/08 10:25:17 by joschmun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef RUN_H
-# define RUN_H
+#ifndef ERROR_H
+# define ERROR_H
 
-# include "init.h"
-# include "window.h"
-# include "error.h"
-# include "parser.h"
+# include "libft.h"
 
-void	run(t_game *game);
+int		error_int(char *msg);
+void	*error_NULL(char *msg);
+void	error_msg(char *msg);
+
 
 #endif

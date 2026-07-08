@@ -6,7 +6,7 @@
 #    By: joschmun <joschmun@student.42wolfsburg>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2026/07/08 03:44:14 by joschmun          #+#    #+#              #
-#    Updated: 2026/07/08 05:49:47 by joschmun         ###   ########.fr        #
+#    Updated: 2026/07/08 09:13:19 by joschmun         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -23,14 +23,18 @@ SRC_DIR   := src
 OBJ_DIR   := obj
 INC_DIR   := inc
 LIBFT_DIR := $(INC_DIR)/libft
+GNL_DIR   := $(INC_DIR)/get_next_line
 MLX_DIR   := $(INC_DIR)/minilibx-linux
 
 # ==================== FLAGS ====================
 CFLAGS    := -Wall -Wextra -Werror -O2
-CPPFLAGS  := -I$(INC_DIR) -I$(LIBFT_DIR) -I$(MLX_DIR) -I$(SRC_DIR) -I$(SRC_DIR)/run -I$(SRC_DIR)/init -I$(SRC_DIR)/window -I$(SRC_DIR)/keyhook -I$(SRC_DIR)/cleanup
+CPPFLAGS  := -I$(INC_DIR) -I$(LIBFT_DIR) -I$(GNL_DIR) -I$(MLX_DIR) \
+             -I$(SRC_DIR) -I$(SRC_DIR)/run -I$(SRC_DIR)/init \
+             -I$(SRC_DIR)/window -I$(SRC_DIR)/keyhook -I$(SRC_DIR)/cleanup -I$(SRC_DIR)/parser \
+			 -I$(SRC_DIR)/error
 
 LDFLAGS   :=
-LDLIBS    := -L$(LIBFT_DIR) -lft -L$(MLX_DIR) -lmlx -lXext -lX11 -lm
+LDLIBS    := -L$(GNL_DIR) -l:get_next_line.a -L$(LIBFT_DIR) -lft -L$(MLX_DIR) -lmlx -lXext -lX11 -lm
 
 # Debug / Sanitizer
 ifeq ($(DEBUG), 1)
@@ -59,13 +63,23 @@ SRC += keyhook.c
 vpath %.c $(SRC_DIR)/cleanup
 SRC += cleanup.c
 
+vpath %.c $(SRC_DIR)/error
+SRC += error.c
+
+vpath %.c $(SRC_DIR)/parser
+SRC += cpy_map.c
+SRC += read_map.c
+SRC += read_metadata.c
+SRC += parser.c
+
 OBJ := $(SRC:.c=.o)
 OBJ := $(addprefix $(OBJ_DIR)/, $(OBJ))
 
 # ==================== REGELN ====================
 all: $(NAME)
 
-$(NAME): $(OBJ) $(LIBFT_DIR)/libft.a
+# GNL zur Abhängigkeit hinzugefügt
+$(NAME): $(OBJ) $(LIBFT_DIR)/libft.a $(GNL_DIR)/get_next_line.a
 	$(CC) $(OBJ) $(LDFLAGS) $(LDLIBS) -o $@
 	@echo "\033[0;32m✓ $(NAME) erfolgreich erstellt!\033[0m"
 
@@ -79,14 +93,20 @@ $(OBJ_DIR):
 $(LIBFT_DIR)/libft.a:
 	@make -C $(LIBFT_DIR) --no-print-directory
 
+# GNL kompilieren
+$(GNL_DIR)/get_next_line.a:
+	@make -C $(GNL_DIR) --no-print-directory
+
 clean:
 	rm -f $(OBJ)
 	rm -rf $(OBJ_DIR)
 	@make -C $(LIBFT_DIR) clean --no-print-directory
+	@make -C $(GNL_DIR) clean --no-print-directory
 
 fclean: clean
 	rm -f $(NAME)
 	@make -C $(LIBFT_DIR) fclean --no-print-directory
+	@make -C $(GNL_DIR) fclean --no-print-directory
 
 re:
 	@make fclean
