@@ -6,7 +6,7 @@
 #    By: joschmun <joschmun@student.42wolfsburg>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2026/07/08 03:44:14 by joschmun          #+#    #+#              #
-#    Updated: 2026/07/08 09:13:19 by joschmun         ###   ########.fr        #
+#    Updated: 2026/07/09 13:55:32 by joschmun         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -69,7 +69,9 @@ SRC += error.c
 vpath %.c $(SRC_DIR)/parser
 SRC += cpy_map.c
 SRC += read_map.c
-SRC += read_metadata.c
+SRC += parse_metadata.c
+SRC += parse_texture.c
+SRC += parse_rgb.c
 SRC += parser.c
 
 OBJ := $(SRC:.c=.o)
