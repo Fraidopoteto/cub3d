@@ -6,7 +6,7 @@
 /*   By: joschmun <joschmun@student.42wolfsburg>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/08 04:51:28 by joschmun          #+#    #+#             */
-/*   Updated: 2026/07/08 05:42:18 by joschmun         ###   ########.fr       */
+/*   Updated: 2026/07/10 11:41:07 by joschmun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,5 +23,6 @@ int	close_game(t_game *game)
 
 void	cleanup(void)
 {
+	
 	printf("cleanup...");
 }

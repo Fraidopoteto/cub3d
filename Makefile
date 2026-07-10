@@ -6,12 +6,8 @@
 #    By: joschmun <joschmun@student.42wolfsburg>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2026/07/08 03:44:14 by joschmun          #+#    #+#              #
-#    Updated: 2026/07/09 13:55:32 by joschmun         ###   ########.fr        #
+#    Updated: 2026/07/10 08:33:02 by joschmun         ###   ########.fr        #
 #                                                                              #
-# **************************************************************************** #
-
-# **************************************************************************** #
-#                                  CUB3D                                       #
 # **************************************************************************** #
 
 NAME := cub3D
@@ -47,32 +43,31 @@ endif
 
 # ==================== SOURCES ====================
 SRC :=
-vpath %.c $(SRC_DIR)/run
-SRC += main.c
-SRC += run.c
-
-vpath %.c $(SRC_DIR)/init
-SRC += init.c
-
-vpath %.c $(SRC_DIR)/window
-SRC += window.c
-
-vpath %.c $(SRC_DIR)/keyhook
-SRC += keyhook.c
-
 vpath %.c $(SRC_DIR)/cleanup
 SRC += cleanup.c
 
 vpath %.c $(SRC_DIR)/error
 SRC += error.c
 
+vpath %.c $(SRC_DIR)/init
+SRC += init.c
+
+vpath %.c $(SRC_DIR)/keyhook
+SRC += keyhook.c
+
 vpath %.c $(SRC_DIR)/parser
-SRC += cpy_map.c
-SRC += read_map.c
+SRC += parse_map.c
 SRC += parse_metadata.c
-SRC += parse_texture.c
 SRC += parse_rgb.c
+SRC += parse_texture.c
 SRC += parser.c
+
+vpath %.c $(SRC_DIR)/run
+SRC += main.c
+SRC += run.c
+
+vpath %.c $(SRC_DIR)/window
+SRC += window.c
 
 OBJ := $(SRC:.c=.o)
 OBJ := $(addprefix $(OBJ_DIR)/, $(OBJ))
@@ -80,7 +75,6 @@ OBJ := $(addprefix $(OBJ_DIR)/, $(OBJ))
 # ==================== REGELN ====================
 all: $(NAME)
 
-# GNL zur Abhängigkeit hinzugefügt
 $(NAME): $(OBJ) $(LIBFT_DIR)/libft.a $(GNL_DIR)/get_next_line.a
 	$(CC) $(OBJ) $(LDFLAGS) $(LDLIBS) -o $@
 	@echo "\033[0;32m✓ $(NAME) erfolgreich erstellt!\033[0m"
