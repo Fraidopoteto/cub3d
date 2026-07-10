@@ -1,0 +1,17 @@
+EA ./textures/mc_cobblestone_64.png
+
+F 220,100,0
+
+WE ./textures/mc_oak_log_64.png
+
+C 225,30,0
+
+NO ./textures/mc_grass_block_side.png
+
+SO ./textures/mc_bricks_64.png
+
+111111
+100101
+101001
+1100N1
+111111
