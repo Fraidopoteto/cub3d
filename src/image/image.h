@@ -1,20 +1,37 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   run.c                                              :+:      :+:    :+:   */
+/*   image.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: joschmun <joschmun@student.42wolfsburg>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/07/08 05:15:19 by joschmun          #+#    #+#             */
-/*   Updated: 2026/07/11 07:26:20 by joschmun         ###   ########.fr       */
+/*   Created: 2026/07/11 06:13:05 by joschmun          #+#    #+#             */
+/*   Updated: 2026/07/11 06:33:37 by joschmun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "run.h"
+#ifndef IMAGE_H
+# define IMAGE_H
 
-void	run(t_game *game)
+# define WIN_WIDTH 1920
+# define WIN_HEIGHT 1080
+# define TILE_SIZE 10
+
+# include "libft.h"
+# include "init.h"
+# include "parser.h"
+
+typedef struct s_game t_game;
+
+typedef struct s_img
 {
-	mlx_hook(game->win, 17, 0, (int (*)())(void *)close_game, game);
-	mlx_hook(game->win, 2, 1L << 0, (int (*)())(void *)handle_keypress, game);
-	mlx_loop(game->mlx);
-}
+    void    *img_ptr;
+    char    *addr;
+    int     bits_per_pixel;
+    int     line_length;
+    int     endian;
+} t_img;
+
+void	draw_minimap(t_game *game);
+
+#endif

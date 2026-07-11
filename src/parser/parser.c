@@ -6,7 +6,7 @@
 /*   By: joschmun <joschmun@student.42wolfsburg>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/08 08:55:26 by joschmun          #+#    #+#             */
-/*   Updated: 2026/07/10 11:36:13 by joschmun         ###   ########.fr       */
+/*   Updated: 2026/07/10 15:30:05 by joschmun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,11 @@ int	parser(char *file_name, t_map *map)
 		printf("%i. %s", y, map->map[y]);
 		y++;
 	}
+	printf("\n");
 	close(fd);
+	if (validate_map(map))
+		return (1);
+	if (validate_metadata(map))
+		return (1);
 	return (0);
 }

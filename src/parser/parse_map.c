@@ -6,7 +6,7 @@
 /*   By: joschmun <joschmun@student.42wolfsburg>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/08 07:55:15 by joschmun          #+#    #+#             */
-/*   Updated: 2026/07/10 11:29:55 by joschmun         ###   ########.fr       */
+/*   Updated: 2026/07/10 15:24:27 by joschmun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,12 +15,22 @@
 static int	_skip_metadata(char *line)
 {
 	int	i;
+	int	is_empty;
 
+	if (!line)
+		return (0);
 	i = 0;
-	while ((line[i] == ' ' || line[i] == '\t') && line[i])
+	is_empty = 1;
+	while (line[i])
+	{
+		if (!ft_strchr("01NSWE \t\n", line[i]))
+			return (0);
+		if (line[i] != ' ' && line[i] != '\t' && line[i] != '\n')
+			is_empty = 0;
 		i++;
-	if (line[i] != '1')
-		return(0);
+	}
+	if (is_empty)
+		return (0);
 	return (1);
 }
 
