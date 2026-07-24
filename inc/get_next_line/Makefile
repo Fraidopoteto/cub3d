@@ -6,7 +6,7 @@
 #    By: joschmun <joschmun@student.42wolfsburg>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/07/15 18:39:31 by jschmunk          #+#    #+#              #
-#    Updated: 2026/07/08 11:46:06 by joschmun         ###   ########.fr        #
+#    Updated: 2026/07/24 16:17:01 by joschmun         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,7 +18,7 @@ OBJ = $(SRC:.c=.o)
 
 CC = cc
 
-CFLAGS = -Wall -Werror -Wextra -D BUFFER_SIZE=42
+CFLAGS = -Wall -Werror -Wextra -D BUFFER_SIZE=1
 
 COMPILE = $(CC) $(CFLAGS) -c
 

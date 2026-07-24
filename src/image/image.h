@@ -6,7 +6,7 @@
 /*   By: joschmun <joschmun@student.42wolfsburg>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/11 06:13:05 by joschmun          #+#    #+#             */
-/*   Updated: 2026/07/11 06:33:37 by joschmun         ###   ########.fr       */
+/*   Updated: 2026/07/13 09:54:08 by joschmun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,20 +18,13 @@
 # define TILE_SIZE 10
 
 # include "libft.h"
-# include "init.h"
 # include "parser.h"
+# include "init.h"
 
 typedef struct s_game t_game;
-
-typedef struct s_img
-{
-    void    *img_ptr;
-    char    *addr;
-    int     bits_per_pixel;
-    int     line_length;
-    int     endian;
-} t_img;
+typedef struct s_img t_img;
 
 void	draw_minimap(t_game *game);
+void	put_pixel_to_img(t_img *img, int x, int y, int color);
 
 #endif

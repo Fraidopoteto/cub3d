@@ -6,11 +6,24 @@
 /*   By: joschmun <joschmun@student.42wolfsburg>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/08 04:19:30 by joschmun          #+#    #+#             */
-/*   Updated: 2026/07/11 07:07:32 by joschmun         ###   ########.fr       */
+/*   Updated: 2026/07/24 14:55:31 by joschmun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "run.h"
+
+static int _check_extension(char *str)
+{
+	int	size;
+
+	size = ft_strlen(str);
+	if (size < 5)
+		return (1);
+	if (ft_strncmp(&str[size - 4], ".cub", 4))
+		return (1);
+	return (0);
+}
+
 
 int	main(int argc, char **argv)
 {
@@ -23,6 +36,8 @@ int	main(int argc, char **argv)
 	ft_bzero(&img, sizeof(t_img));
 	if (argc != 2)
 		return (error_int("Error\nwrong number of arguments!\n"));
+	if (_check_extension(argv[1]))
+		return (error_int("Error\nwrong file extension\n"));
 	if (parser(argv[1], &map))
 		return (1);
 	game.map = &map;

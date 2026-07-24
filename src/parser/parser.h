@@ -6,7 +6,7 @@
 /*   By: joschmun <joschmun@student.42wolfsburg>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/08 07:51:32 by joschmun          #+#    #+#             */
-/*   Updated: 2026/07/10 15:29:28 by joschmun         ###   ########.fr       */
+/*   Updated: 2026/07/24 16:15:05 by joschmun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,18 @@ typedef struct s_map
 	int *ceiling_rgb;
 } t_map;
 
+typedef struct s_skip_meta
+{
+	int no;
+	int so;
+	int we;
+	int ea;
+	int f;
+	int c;
+	int map_found;
+	int metadata_found;
+} t_skip_meta;
+
 char	**cpy_map(int max_y, int max_x, char **map);
 char	*get_texture_path(char *line, int i);
 int		*get_rgb(char *line, int i);
@@ -41,6 +53,7 @@ int		read_map(t_map *map, char *file_name);
 int		parser(char *file_name, t_map *map);
 int		validate_map(t_map *map);
 int		validate_metadata(t_map *map);
+void	gnl_full_cleanup(void);
 
 
 #endif

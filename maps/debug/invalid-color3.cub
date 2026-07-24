@@ -1,7 +1,7 @@
-NO ./textures/mc_grass_block_side.png
-SO ./textures/mc_bricks_64.png
-WE ./textures/mc_oak_log_64.png
-EA ./textures/mc_cobblestone_64.png
+EA ./textures/e.xpm
+NO ./textures/n.xpm
+SO ./textures/s.xpm
+WE ./textures/w.xpm
 
 F 113,,177
 C 142,190,255

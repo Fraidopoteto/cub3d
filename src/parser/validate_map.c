@@ -6,11 +6,12 @@
 /*   By: joschmun <joschmun@student.42wolfsburg>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/10 15:00:23 by joschmun          #+#    #+#             */
-/*   Updated: 2026/07/10 15:16:59 by joschmun         ###   ########.fr       */
+/*   Updated: 2026/07/24 16:09:38 by joschmun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "parser.h"
+#include <stdio.h>
 
 static void	_free_matrix(char **matrix)
 {
@@ -86,7 +87,10 @@ static int	_check_chars_and_player(t_map *map, int *p_y, int *p_x)
 				player_count++;
 			}
 			else if (!ft_strchr("01 \t\n", map->map[y][x]))
+			{
+				printf("%c", map->map[y][x]);
 				return (error_int("Error\nInvalid char in map\n"));
+			}
 		}
 	}
 	if (player_count != 1)

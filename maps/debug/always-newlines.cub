@@ -1,11 +1,11 @@
 
-NO ./textures/mc_grass_block_side.png
+EA ./textures/e.xpm
 
-SO ./textures/mc_bricks_64.png
+NO ./textures/n.xpm
 
-WE ./textures/mc_oak_log_64.png
+SO ./textures/s.xpm
 
-EA ./textures/mc_cobblestone_64.png
+WE ./textures/w.xpm
 
 
 F 220,100,0

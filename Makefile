@@ -6,7 +6,7 @@
 #    By: joschmun <joschmun@student.42wolfsburg>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2026/07/08 03:44:14 by joschmun          #+#    #+#              #
-#    Updated: 2026/07/11 06:21:47 by joschmun         ###   ########.fr        #
+#    Updated: 2026/07/23 12:49:45 by joschmun         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -27,7 +27,7 @@ CFLAGS    := -Wall -Wextra -Werror -O2
 CPPFLAGS  := -I$(INC_DIR) -I$(LIBFT_DIR) -I$(GNL_DIR) -I$(MLX_DIR) \
              -I$(SRC_DIR) -I$(SRC_DIR)/run -I$(SRC_DIR)/init \
              -I$(SRC_DIR)/window -I$(SRC_DIR)/keyhook -I$(SRC_DIR)/cleanup -I$(SRC_DIR)/parser \
-			 -I$(SRC_DIR)/error -I$(SRC_DIR)/image
+			 -I$(SRC_DIR)/error -I$(SRC_DIR)/image -I$(SRC_DIR)/player -I$(SRC_DIR)/raycast
 
 LDFLAGS   :=
 LDLIBS    := -L$(GNL_DIR) -l:get_next_line.a -L$(LIBFT_DIR) -lft -L$(MLX_DIR) -lmlx -lXext -lX11 -lm
@@ -51,12 +51,16 @@ SRC += error.c
 
 vpath %.c $(SRC_DIR)/image
 SRC += mini_map.c
+SRC += image.c
 
 vpath %.c $(SRC_DIR)/init
 SRC += init.c
 
 vpath %.c $(SRC_DIR)/keyhook
 SRC += keyhook.c
+
+vpath %.c $(SRC_DIR)/player
+SRC += player.c
 
 vpath %.c $(SRC_DIR)/parser
 SRC += parse_map.c
@@ -66,6 +70,10 @@ SRC += parse_texture.c
 SRC += parser.c
 SRC += validate_map.c
 SRC += validate_metadata.c
+
+vpath %.c $(SRC_DIR)/raycast
+SRC += raycast.c
+SRC += raycast_utils.c
 
 vpath %.c $(SRC_DIR)/run
 SRC += main.c

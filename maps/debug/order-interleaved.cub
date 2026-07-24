@@ -1,9 +1,9 @@
-NO ./textures/mc_grass_block_side.png
+NO ./textures/n.xpm
 F 220,100,0
-SO ./textures/mc_bricks_64.png
+SO ./textures/s.xpm
 C 225,30,0
-WE ./textures/mc_oak_log_64.png
-EA ./textures/mc_cobblestone_64.png
+WE ./textures/w.xpm
+EA ./textures/e.xpm
 
 111111
 100101
