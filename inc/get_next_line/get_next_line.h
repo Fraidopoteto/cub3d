@@ -6,7 +6,7 @@
 /*   By: joschmun <joschmun@student.42wolfsburg>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/05 17:53:12 by jschmunk          #+#    #+#             */
-/*   Updated: 2026/07/24 16:16:56 by joschmun         ###   ########.fr       */
+/*   Updated: 2026/07/25 14:11:37 by joschmun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,10 +23,10 @@
 # include <string.h>
 # include "../../inc/libft/libft.h"
 
-char    *get_next_line(int fd);
-char    *ft_readbuff(int fd, char *save);
-char    *ft_getline(char *save);
-char    *ft_restofline(char *save);
-int     ft_firstreadbuff(int fd, char *save);
+char	*get_next_line(int fd);
+char	*ft_readbuff(int fd, char ve);
+char	*ft_getline(char ve);
+char	*ft_restofline(char *save);
+int		ft_firstreadbuff(int fd, char *save);
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: joschmun <joschmun@student.42wolfsburg>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/11 06:15:29 by joschmun          #+#    #+#             */
-/*   Updated: 2026/07/13 08:30:56 by joschmun         ###   ########.fr       */
+/*   Updated: 2026/07/25 13:50:41 by joschmun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,8 @@ void	draw_minimap(t_game *game)
 	int	x;
 	int	color;
 
-	if (!game || !game->map || !game->map->map || !game->img || !game->img->addr)
+	if (!game || !game->map || !game->map->map || !game->img
+		|| !game->img->addr)
 		return ;
 	y = 0;
 	while (game->map->map[y])

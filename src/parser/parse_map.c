@@ -6,7 +6,7 @@
 /*   By: joschmun <joschmun@student.42wolfsburg>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/08 07:55:15 by joschmun          #+#    #+#             */
-/*   Updated: 2026/07/25 12:30:53 by joschmun         ###   ########.fr       */
+/*   Updated: 2026/07/25 14:07:20 by joschmun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,11 +30,18 @@ static int	_skip_metadata(char *line)
 		return (1);
 	return (0);
 }
+
 static void	gnl_cleanup(int fd)
 {
-	char *line;
-	while ((line = get_next_line(fd)) != NULL)
+	char	*line;
+
+	line = get_next_line(fd);
+	while (line)
+	{
 		free(line);
+		line = get_next_line(fd);
+	}
+	free(line);
 }
 
 static int	_fill_map(int fd, t_map *map)
@@ -64,7 +71,7 @@ static int	_fill_map(int fd, t_map *map)
 	return (0);
 }
 
-static int _allocate_map(int fd, t_map *map)
+static int	_allocate_map(int fd, t_map *map)
 {
 	char	*line;
 	int		line_count;
@@ -84,7 +91,7 @@ static int _allocate_map(int fd, t_map *map)
 	}
 	free(line);
 	if (line_count > 100)
-		return(error_int("Error\nMap too big\n"));
+		return (error_int("Error\nMap too big\n"));
 	map->map = ft_calloc(line_count + 1, sizeof(char *));
 	if (!map->map)
 		return (1);
@@ -98,7 +105,7 @@ int	read_map(t_map *map, char *file_name)
 
 	fd = open(file_name, O_RDONLY);
 	if (fd == -1)
-		return(error_int("Error\ncould not open file\n"));
+		return (error_int("Error\ncould not open file\n"));
 	if (_allocate_map(fd, map))
 	{
 		gnl_cleanup(fd);
@@ -109,7 +116,7 @@ int	read_map(t_map *map, char *file_name)
 	close(fd);
 	fd = open(file_name, O_RDONLY);
 	if (fd == -1)
-		return(error_int("Error\ncould not open file\n"));
+		return (error_int("Error\ncould not open file\n"));
 	if (_fill_map(fd, map))
 	{
 		gnl_cleanup(fd);

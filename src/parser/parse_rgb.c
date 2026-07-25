@@ -6,7 +6,7 @@
 /*   By: joschmun <joschmun@student.42wolfsburg>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/09 10:35:50 by joschmun          #+#    #+#             */
-/*   Updated: 2026/07/24 17:05:39 by joschmun         ###   ########.fr       */
+/*   Updated: 2026/07/25 13:35:48 by joschmun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,9 +61,9 @@ static int	*parse_rgb_values(char *str)
 		i++;
 	if (i != 3 || !split[0][0] || !split[1][0] || !split[2][0])
 		return (return_rgb_error(split));
-	if (!is_valid_rgb_number(split[0]) ||
-		!is_valid_rgb_number(split[1]) ||
-		!is_valid_rgb_number(split[2]))
+	if (!is_valid_rgb_number(split[0])
+		|| !is_valid_rgb_number(split[1])
+		|| !is_valid_rgb_number(split[2]))
 		return (return_rgb_error(split));
 	rgb = malloc(sizeof(int) * 3);
 	if (!rgb)

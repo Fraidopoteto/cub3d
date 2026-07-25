@@ -6,7 +6,7 @@
 /*   By: joschmun <joschmun@student.42wolfsburg>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/16 11:14:37 by joschmun          #+#    #+#             */
-/*   Updated: 2026/07/25 13:10:53 by joschmun         ###   ########.fr       */
+/*   Updated: 2026/07/25 13:59:38 by joschmun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,8 +26,14 @@ void	setup_ray(t_game *g, t_ray *r, int x)
 	r->dir_y = g->player.dir_y + g->player.plane_y * r->camera_x;
 	r->map_x = (int)g->player.pos_x;
 	r->map_y = (int)g->player.pos_y;
-	r->delta_dist_x = (r->dir_x == 0) ? 1e30 : fabs(1 / r->dir_x);
-	r->delta_dist_y = (r->dir_y == 0) ? 1e30 : fabs(1 / r->dir_y);
+	if (r->dir_x == 0)
+		r->delta_dist_x = 1e30;
+	else
+		r->delta_dist_x = fabs(1 / r->dir_x);
+	if (r->dir_y == 0)
+		r->delta_dist_y = 1e30;
+	else
+		r->delta_dist_y = fabs(1 / r->dir_y);
 }
 
 static void	_init_step(t_game *g, t_ray *r)
@@ -73,7 +79,7 @@ void	perform_dda(t_game *g, t_ray *r)
 			r->side = 1;
 		}
 		if (r->map_x < 0 || r->map_y < 0)
-			break ; // Safety Break, falls du aus der Map clippst
+			break ;
 		if (g->map->map[r->map_y][r->map_x] == '1')
 			r->hit = 1;
 	}

@@ -6,7 +6,7 @@
 /*   By: joschmun <joschmun@student.42wolfsburg>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/08 08:28:38 by joschmun          #+#    #+#             */
-/*   Updated: 2026/07/25 12:27:20 by joschmun         ###   ########.fr       */
+/*   Updated: 2026/07/25 13:44:48 by joschmun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,8 @@ int	error_int(char *msg)
 	ft_putstr_fd("\n", 2);
 	return (1);
 }
-void	*error_NULL(char *msg)
+
+void	*error_null(char *msg)
 {
 	ft_putstr_fd(msg, 2);
 	ft_putstr_fd("\n", 2);

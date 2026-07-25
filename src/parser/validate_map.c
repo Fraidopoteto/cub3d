@@ -6,7 +6,7 @@
 /*   By: joschmun <joschmun@student.42wolfsburg>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/10 15:00:23 by joschmun          #+#    #+#             */
-/*   Updated: 2026/07/25 13:07:50 by joschmun         ###   ########.fr       */
+/*   Updated: 2026/07/25 13:43:42 by joschmun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,12 +27,12 @@ static int	_flood_fill(char **map, int y, int x)
 	return (1);
 }
 
-static int	_process_char(char c, int y, int x, int *p_y, int *p_x)
+static int	_process_char(char c, int vec[2], int *p_y, int *p_x)
 {
 	if (ft_strchr("NSWE", c))
 	{
-		*p_y = y;
-		*p_x = x;
+		*p_y = vec[0];
+		*p_x = vec[1];
 		return (1);
 	}
 	if (!ft_strchr("01 \t\n", c))
@@ -57,7 +57,7 @@ static int	_check_chars_and_player(t_map *map, int *p_y, int *p_x)
 		x = -1;
 		while (map->map[y][++x])
 		{
-			res = _process_char(map->map[y][x], y, x, p_y, p_x);
+			res = _process_char(map->map[y][x], (int []){y, x}, p_y, p_x);
 			if (res == 1)
 				pc++;
 			else if (res == -1)

@@ -6,43 +6,43 @@
 /*   By: joschmun <joschmun@student.42wolfsburg>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/08 07:51:32 by joschmun          #+#    #+#             */
-/*   Updated: 2026/07/25 13:08:45 by joschmun         ###   ########.fr       */
+/*   Updated: 2026/07/25 13:30:58 by joschmun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef PARSER_H
 # define PARSER_H
 
-#include <stdlib.h>
-#include <stdio.h>
-#include <fcntl.h>
-#include <unistd.h>
-#include <errno.h>
-#include "get_next_line.h"
-#include "libft.h"
-#include "error.h"
+# include <stdlib.h>
+# include <stdio.h>
+# include <fcntl.h>
+# include <unistd.h>
+# include <errno.h>
+# include "get_next_line.h"
+# include "libft.h"
+# include "error.h"
 
 typedef struct s_map
 {
-	char **map;
-	char *path_no;
-	char *path_so;
-	char *path_we;
-	char *path_ea;
-	int	*floor_rgb;
-	int *ceiling_rgb;
+	char	**map;
+	char	*path_no;
+	char	*path_so;
+	char	*path_we;
+	char	*path_ea;
+	int		*floor_rgb;
+	int		*ceiling_rgb;
 }	t_map;
 
 typedef struct s_skip_meta
 {
-	int no;
-	int so;
-	int we;
-	int ea;
-	int f;
-	int c;
-	int map_found;
-	int metadata_found;
+	int	no;
+	int	so;
+	int	we;
+	int	ea;
+	int	f;
+	int	c;
+	int	map_found;
+	int	metadata_found;
 }	t_skip_meta;
 
 char	**cpy_map(int max_y, int max_x, char **map);

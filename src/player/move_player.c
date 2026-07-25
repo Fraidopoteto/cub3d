@@ -6,7 +6,7 @@
 /*   By: joschmun <joschmun@student.42wolfsburg>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/25 12:21:43 by joschmun          #+#    #+#             */
-/*   Updated: 2026/07/25 13:10:18 by joschmun         ###   ########.fr       */
+/*   Updated: 2026/07/25 13:51:29 by joschmun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,8 @@ static void	_rotate_player(t_game *g, double rs)
 	g->player.dir_x = g->player.dir_x * cos(rs) - g->player.dir_y * sin(rs);
 	g->player.dir_y = old_dir * sin(rs) + g->player.dir_y * cos(rs);
 	old_plane = g->player.plane_x;
-	g->player.plane_x = g->player.plane_x * cos(rs) - g->player.plane_y * sin(rs);
+	g->player.plane_x = g->player.plane_x * cos(rs)
+		- g->player.plane_y * sin(rs);
 	g->player.plane_y = old_plane * sin(rs) + g->player.plane_y * cos(rs);
 }
 

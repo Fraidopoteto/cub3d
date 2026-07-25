@@ -6,15 +6,15 @@
 /*   By: joschmun <joschmun@student.42wolfsburg>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/08 03:52:41 by joschmun          #+#    #+#             */
-/*   Updated: 2026/07/25 12:29:38 by joschmun         ###   ########.fr       */
+/*   Updated: 2026/07/25 13:27:52 by joschmun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef INIT_H
 # define INIT_H
 
-#define TEX_WIDTH 64
-#define TEX_HEIGHT 64
+# define TEX_WIDTH 64
+# define TEX_HEIGHT 64
 
 # include <stdio.h>
 # include <stdlib.h>
@@ -32,7 +32,7 @@ typedef struct s_player
 	double	move_speed;
 	double	rot_speed;
 	double	plane_x;
-    double	plane_y;
+	double	plane_y;
 }	t_player;
 
 typedef struct s_img
@@ -44,7 +44,7 @@ typedef struct s_img
 	int		endian;
 	int		width;
 	int		height;
-} t_img;
+}	t_img;
 
 typedef struct s_game
 {

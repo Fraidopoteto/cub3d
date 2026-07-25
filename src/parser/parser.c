@@ -6,7 +6,7 @@
 /*   By: joschmun <joschmun@student.42wolfsburg>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/08 08:55:26 by joschmun          #+#    #+#             */
-/*   Updated: 2026/07/25 12:56:36 by joschmun         ###   ########.fr       */
+/*   Updated: 2026/07/25 14:07:24 by joschmun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,12 +15,18 @@
 
 void	gnl_full_cleanup(void)
 {
-	char *line;
-	while ((line = get_next_line(-1)) != NULL)
+	char	*line;
+
+	line = get_next_line(-1);
+	while (line)
+	{
 		free(line);
+		line = get_next_line(-1);
+	}
+	free(line);
 }
 
-static int _free_map_resources(t_map *map)
+static int	_free_map_resources(t_map *map)
 {
 	int	i;
 
@@ -54,7 +60,7 @@ int	parser(char *file_name, t_map *map)
 
 	fd = open(file_name, O_RDONLY);
 	if (fd == -1)
-		return(error_int("Error\ncould not open file\n"));
+		return (error_int("Error\ncould not open file\n"));
 	if (read_metadata(map, fd))
 	{
 		close(fd);

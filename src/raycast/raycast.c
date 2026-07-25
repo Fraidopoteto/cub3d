@@ -6,7 +6,7 @@
 /*   By: joschmun <joschmun@student.42wolfsburg>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/13 09:02:34 by joschmun          #+#    #+#             */
-/*   Updated: 2026/07/25 13:11:06 by joschmun         ###   ########.fr       */
+/*   Updated: 2026/07/25 13:56:14 by joschmun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,9 +30,17 @@ static void	_calc_line_height(t_ray *r)
 static void	_calc_tex(t_game *g, t_ray *r)
 {
 	if (r->side == 0)
-		r->tex_num = (r->dir_x > 0) ? 2 : 3;
+	{
+		r->tex_num = 3;
+		if (r->dir_x > 0)
+			r->tex_num = 2;
+	}
 	else
-		r->tex_num = (r->dir_y > 0) ? 1 : 0;
+	{
+		r->tex_num = 0;
+		if (r->dir_y > 0)
+			r->tex_num = 1;
+	}
 	if (r->side == 0)
 		r->wall_x = g->player.pos_y + r->perp_wall_dist * r->dir_y;
 	else

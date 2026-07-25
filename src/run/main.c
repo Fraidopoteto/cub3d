@@ -6,13 +6,13 @@
 /*   By: joschmun <joschmun@student.42wolfsburg>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/08 04:19:30 by joschmun          #+#    #+#             */
-/*   Updated: 2026/07/25 13:11:19 by joschmun         ###   ########.fr       */
+/*   Updated: 2026/07/25 13:28:22 by joschmun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "run.h"
 
-static int _check_extension(char *str)
+static int	_check_extension(char *str)
 {
 	int	size;
 
@@ -23,7 +23,6 @@ static int _check_extension(char *str)
 		return (1);
 	return (0);
 }
-
 
 int	main(int argc, char **argv)
 {
