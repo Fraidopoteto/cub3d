@@ -6,7 +6,7 @@
 /*   By: joschmun <joschmun@student.42wolfsburg>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/08 04:51:28 by joschmun          #+#    #+#             */
-/*   Updated: 2026/07/24 13:36:00 by joschmun         ###   ########.fr       */
+/*   Updated: 2026/07/25 12:26:34 by joschmun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,7 +57,7 @@ void	cleanup(t_game *game)
 		mlx_destroy_window(game->mlx, game->win);
 	if (game->mlx)
 	{
-		mlx_destroy_display(game->mlx); // MinilibX-Linux spezifisch!
+		mlx_destroy_display(game->mlx);
 		free(game->mlx);
 	}
 	if (game->map)

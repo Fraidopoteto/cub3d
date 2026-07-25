@@ -6,7 +6,7 @@
 #    By: joschmun <joschmun@student.42wolfsburg>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2026/07/08 03:44:14 by joschmun          #+#    #+#              #
-#    Updated: 2026/07/23 12:49:45 by joschmun         ###   ########.fr        #
+#    Updated: 2026/07/25 12:22:11 by joschmun         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -61,6 +61,7 @@ SRC += keyhook.c
 
 vpath %.c $(SRC_DIR)/player
 SRC += player.c
+SRC += move_player.c
 
 vpath %.c $(SRC_DIR)/parser
 SRC += parse_map.c
