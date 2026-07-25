@@ -6,51 +6,11 @@
 /*   By: joschmun <joschmun@student.42wolfsburg>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/10 15:00:23 by joschmun          #+#    #+#             */
-/*   Updated: 2026/07/24 16:09:38 by joschmun         ###   ########.fr       */
+/*   Updated: 2026/07/25 13:07:50 by joschmun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "parser.h"
-#include <stdio.h>
-
-static void	_free_matrix(char **matrix)
-{
-	int	i;
-
-	if (!matrix)
-		return ;
-	i = 0;
-	while (matrix[i])
-	{
-		free(matrix[i]);
-		i++;
-	}
-	free(matrix);
-}
-
-static char	**_copy_map(char **map)
-{
-	char	**copy;
-	int		len;
-	int		i;
-
-	len = 0;
-	while (map[len])
-		len++;
-	copy = ft_calloc(len + 1, sizeof(char *));
-	if (!copy)
-		return (NULL);
-	i = 0;
-	while (i < len)
-	{
-		copy[i] = ft_strdup(map[i]);
-		if (!copy[i])
-			return (_free_matrix(copy), NULL);
-		i++;
-	}
-	copy[len] = NULL;
-	return (copy);
-}
 
 static int	_flood_fill(char **map, int y, int x)
 {
@@ -67,33 +27,44 @@ static int	_flood_fill(char **map, int y, int x)
 	return (1);
 }
 
+static int	_process_char(char c, int y, int x, int *p_y, int *p_x)
+{
+	if (ft_strchr("NSWE", c))
+	{
+		*p_y = y;
+		*p_x = x;
+		return (1);
+	}
+	if (!ft_strchr("01 \t\n", c))
+	{
+		printf("%c", c);
+		return (-1);
+	}
+	return (0);
+}
+
 static int	_check_chars_and_player(t_map *map, int *p_y, int *p_x)
 {
 	int	y;
 	int	x;
-	int	player_count;
+	int	pc;
+	int	res;
 
 	y = -1;
-	player_count = 0;
+	pc = 0;
 	while (map->map[++y])
 	{
 		x = -1;
 		while (map->map[y][++x])
 		{
-			if (ft_strchr("NSWE", map->map[y][x]) && map->map[y][x] != '\0')
-			{
-				*p_y = y;
-				*p_x = x;
-				player_count++;
-			}
-			else if (!ft_strchr("01 \t\n", map->map[y][x]))
-			{
-				printf("%c", map->map[y][x]);
+			res = _process_char(map->map[y][x], y, x, p_y, p_x);
+			if (res == 1)
+				pc++;
+			else if (res == -1)
 				return (error_int("Error\nInvalid char in map\n"));
-			}
 		}
 	}
-	if (player_count != 1)
+	if (pc != 1)
 		return (error_int("Error\nMap must have exactly one player\n"));
 	return (0);
 }

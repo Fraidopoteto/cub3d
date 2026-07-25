@@ -6,7 +6,7 @@
 /*   By: joschmun <joschmun@student.42wolfsburg>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/08 07:55:15 by joschmun          #+#    #+#             */
-/*   Updated: 2026/07/24 17:28:52 by joschmun         ###   ########.fr       */
+/*   Updated: 2026/07/25 12:30:53 by joschmun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,9 +39,9 @@ static void	gnl_cleanup(int fd)
 
 static int	_fill_map(int fd, t_map *map)
 {
-	char	*line;
-	int		i;
-	t_skip_meta meta;
+	char		*line;
+	int			i;
+	t_skip_meta	meta;
 
 	ft_memset(&meta, 0, sizeof(t_skip_meta));
 	i = 0;

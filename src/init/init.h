@@ -6,7 +6,7 @@
 /*   By: joschmun <joschmun@student.42wolfsburg>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/08 03:52:41 by joschmun          #+#    #+#             */
-/*   Updated: 2026/07/13 09:23:16 by joschmun         ###   ########.fr       */
+/*   Updated: 2026/07/25 12:29:38 by joschmun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,25 +25,25 @@
 
 typedef struct s_player
 {
-	double	pos_x;     // Exakte Position in der Map (z.B. 3.5)
+	double	pos_x;
 	double	pos_y;
-	double	dir_x;     // Blickrichtung Vektor
+	double	dir_x;
 	double	dir_y;
 	double	move_speed;
 	double	rot_speed;
-	double plane_x; // NEU: X-Vektor der Kamera-Ebene
-    double plane_y; // NEU: Y-Vektor der Kamera-Ebene
+	double	plane_x;
+    double	plane_y;
 }	t_player;
 
 typedef struct s_img
 {
-    void    *img_ptr;
-    char    *addr;
-    int     bits_per_pixel;
-    int     line_length;
-    int     endian;
-    int     width;  // NEU: Wichtig für Texturen
-    int     height; // NEU: Wichtig für Texturen
+	void	*img_ptr;
+	char	*addr;
+	int		bits_per_pixel;
+	int		line_length;
+	int		endian;
+	int		width;
+	int		height;
 } t_img;
 
 typedef struct s_game

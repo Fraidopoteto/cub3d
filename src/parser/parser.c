@@ -6,7 +6,7 @@
 /*   By: joschmun <joschmun@student.42wolfsburg>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/08 08:55:26 by joschmun          #+#    #+#             */
-/*   Updated: 2026/07/24 16:14:37 by joschmun         ###   ########.fr       */
+/*   Updated: 2026/07/25 12:56:36 by joschmun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,12 +20,12 @@ void	gnl_full_cleanup(void)
 		free(line);
 }
 
-static void _free_map_resources(t_map *map)
+static int _free_map_resources(t_map *map)
 {
 	int	i;
 
 	if (!map)
-		return ;
+		return (1);
 	if (map->map)
 	{
 		i = 0;
@@ -45,6 +45,7 @@ static void _free_map_resources(t_map *map)
 		free(map->floor_rgb);
 	if (map->ceiling_rgb)
 		free(map->ceiling_rgb);
+	return (1);
 }
 
 int	parser(char *file_name, t_map *map)
@@ -56,36 +57,15 @@ int	parser(char *file_name, t_map *map)
 		return(error_int("Error\ncould not open file\n"));
 	if (read_metadata(map, fd))
 	{
-		_free_map_resources(map);
-		gnl_full_cleanup();
 		close(fd);
-		return (1);
+		return (_free_map_resources(map));
 	}
 	if (read_map(map, file_name))
-	{
-		_free_map_resources(map);
-		gnl_full_cleanup();
-		return (1);
-	}
+		return (_free_map_resources(map));
 	close(fd);
-	printf("====MAP DEBUG====\n\n");
-	int y = 0;
-	while (map->map[y])
-	{
-		printf("%i. %s", y, map->map[y]);
-		y++;
-	}
 	if (validate_map(map))
-	{
-		_free_map_resources(map);
-		gnl_full_cleanup();
-		return (1);
-	}
+		return (_free_map_resources(map));
 	if (validate_metadata(map))
-	{
-		_free_map_resources(map);
-		gnl_full_cleanup();
-		return (1);
-	}
+		return (_free_map_resources(map));
 	return (0);
 }

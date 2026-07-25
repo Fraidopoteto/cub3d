@@ -1,31 +1,52 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   parse_texture.c                                    :+:      :+:    :+:   */
+/*   validate_map_utils.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: joschmun <joschmun@student.42wolfsburg>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/07/09 10:35:48 by joschmun          #+#    #+#             */
-/*   Updated: 2026/07/25 12:31:25 by joschmun         ###   ########.fr       */
+/*   Created: 2026/07/25 13:06:33 by joschmun          #+#    #+#             */
+/*   Updated: 2026/07/25 13:08:16 by joschmun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "parser.h"
 
-char	*get_texture_path(char *line, int i)
+void	_free_matrix(char **matrix)
 {
-	int		start;
-	int		len;
-	char	*path;
+	int	i;
 
-	while(line[i] == '\t' || line[i] == ' ')
+	if (!matrix)
+		return ;
+	i = 0;
+	while (matrix[i])
+	{
+		free(matrix[i]);
 		i++;
-	start = i;
-	while (line[i] && line[i] != ' ' && line[i] != '\t' && line[i] != '\n')
-		i++;
-	len = i - start;
-	if (len <= 0)
+	}
+	free(matrix);
+}
+
+char	**_copy_map(char **map)
+{
+	char	**copy;
+	int		len;
+	int		i;
+
+	len = 0;
+	while (map[len])
+		len++;
+	copy = ft_calloc(len + 1, sizeof(char *));
+	if (!copy)
 		return (NULL);
-	path = ft_substr(line, start, len);
-	return (path);
+	i = 0;
+	while (i < len)
+	{
+		copy[i] = ft_strdup(map[i]);
+		if (!copy[i])
+			return (_free_matrix(copy), NULL);
+		i++;
+	}
+	copy[len] = NULL;
+	return (copy);
 }
