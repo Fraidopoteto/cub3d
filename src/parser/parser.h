@@ -6,7 +6,7 @@
 /*   By: joschmun <joschmun@student.42wolfsburg>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/08 07:51:32 by joschmun          #+#    #+#             */
-/*   Updated: 2026/07/25 13:30:58 by joschmun         ###   ########.fr       */
+/*   Updated: 2026/07/27 14:07:29 by joschmun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,5 +56,6 @@ int		validate_metadata(t_map *map);
 void	gnl_full_cleanup(void);
 char	**_copy_map(char **map);
 void	_free_matrix(char **matrix);
+int		validate_texture(t_map *map);
 
 #endif

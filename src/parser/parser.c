@@ -6,7 +6,7 @@
 /*   By: joschmun <joschmun@student.42wolfsburg>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/08 08:55:26 by joschmun          #+#    #+#             */
-/*   Updated: 2026/07/25 14:07:24 by joschmun         ###   ########.fr       */
+/*   Updated: 2026/07/27 14:02:54 by joschmun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,6 +72,8 @@ int	parser(char *file_name, t_map *map)
 	if (validate_map(map))
 		return (_free_map_resources(map));
 	if (validate_metadata(map))
+		return (_free_map_resources(map));
+	if (validate_texture(map))
 		return (_free_map_resources(map));
 	return (0);
 }

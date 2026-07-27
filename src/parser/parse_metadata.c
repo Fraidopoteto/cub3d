@@ -6,7 +6,7 @@
 /*   By: joschmun <joschmun@student.42wolfsburg>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/08 08:14:56 by joschmun          #+#    #+#             */
-/*   Updated: 2026/07/24 16:27:57 by joschmun         ###   ########.fr       */
+/*   Updated: 2026/07/27 14:18:52 by joschmun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,24 +26,24 @@ static char	*_cut_newline(char *line)
 
 static int	_parse_line(char *line, t_map *map)
 {
-	if (line[0] == '\n' || line[0] == '\0')
+	if (line[0] == '\n' || line[0] == '\0' || line[0] == '1' || line[0] == '\t'  || line[0] == ' ')
 		return (0);
-	if (ft_strncmp(&line[0], "NO ", 3) == 0 && !map->path_no)
+	if (ft_strncmp(line, "NO ", 3) == 0 && !map->path_no)
 		return ((map->path_no = get_texture_path(line, 3)) != NULL);
-	if (ft_strncmp(&line[0], "SO ", 3) == 0 && !map->path_so)
+	if (ft_strncmp(line, "SO ", 3) == 0 && !map->path_so)
 		return ((map->path_so = get_texture_path(line, 3)) != NULL);
-	if (ft_strncmp(&line[0], "WE ", 3) == 0 && !map->path_we)
+	if (ft_strncmp(line, "WE ", 3) == 0 && !map->path_we)
 		return ((map->path_we = get_texture_path(line, 3)) != NULL);
-	if (ft_strncmp(&line[0], "EA ", 3) == 0 && !map->path_ea)
+	if (ft_strncmp(line, "EA ", 3) == 0 && !map->path_ea)
 		return ((map->path_ea = get_texture_path(line, 3)) != NULL);
-	if (ft_strncmp(&line[0], "F ", 2) == 0)
+	if (ft_strncmp(line, "F ", 2) == 0 && !map->floor_rgb)
 		return ((map->floor_rgb = get_rgb(line, 2)) != NULL);
-	if (ft_strncmp(&line[0], "C ", 2) == 0)
+	if (ft_strncmp(line, "C ", 2) == 0 && !map->ceiling_rgb)
 		return ((map->ceiling_rgb = get_rgb(line, 2)) != NULL);
 	return (-1);
 }
 
-static int	_read_line(char *line, t_map *map, int *element_count)
+static int	_read_line(char *line, t_map *map)
 {
 	int	status;
 
@@ -51,29 +51,26 @@ static int	_read_line(char *line, t_map *map, int *element_count)
 	free(line);
 	if (status == -1)
 		return (error_int("Error\nInvalid metadata\n"));
-	if (status == 1)
-		(*element_count)++;
 	return (0);
 }
 
 int	read_metadata(t_map *map, int fd)
 {
-	int		element_count;
 	char	*line;
 	char	*cut_line;
 
-	element_count = 0;
 	line = get_next_line(fd);
-	while (line && element_count != 6)
+	while (line)
 	{
 		cut_line = _cut_newline(line);
 		free(line);
-		if (_read_line(cut_line, map, &element_count))
+		if (_read_line(cut_line, map))
 		{
+			line = get_next_line(fd);
 			while (line)
 			{
-				line = get_next_line(fd);
 				free(line);
+				line = get_next_line(fd);
 			}
 			return (1);
 		}

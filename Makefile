@@ -6,7 +6,7 @@
 #    By: joschmun <joschmun@student.42wolfsburg>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2026/07/08 03:44:14 by joschmun          #+#    #+#              #
-#    Updated: 2026/07/25 13:08:11 by joschmun         ###   ########.fr        #
+#    Updated: 2026/07/27 14:07:54 by joschmun         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -72,6 +72,7 @@ SRC += parser.c
 SRC += validate_map.c
 SRC += validate_metadata.c
 SRC += validate_map_utils.c
+SRC += validate_utils.c
 
 vpath %.c $(SRC_DIR)/raycast
 SRC += raycast.c
