@@ -2,7 +2,7 @@
 
 A project from the 42 curriculum. The goal of this project is to create a dynamic 3D representation of a maze using raycasting principles, inspired by the world-famous 1992 game *Wolfenstein 3D*. 
 
-![cub3D Gameplay](image_cbd39c.png)
+![cub3D Gameplay](recording/Kooha-2026-10-29-12-37-48.gif)
 
 ## Overview
 
