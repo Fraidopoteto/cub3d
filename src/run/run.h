@@ -6,7 +6,7 @@
 /*   By: joschmun <joschmun@student.42wolfsburg>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/08 03:54:15 by joschmun          #+#    #+#             */
-/*   Updated: 2026/07/08 05:57:10 by joschmun         ###   ########.fr       */
+/*   Updated: 2026/07/25 13:12:16 by joschmun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,13 @@
 
 # include "init.h"
 # include "window.h"
+# include "error.h"
+# include "parser.h"
+# include "image.h"
+# include "player.h"
+# include "raycast.h"
 
 void	run(t_game *game);
+int		game_update(t_game *game);
 
 #endif
